@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" version="4.0">
+  <display-name>K08JSPServlet</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <!-- 해당 프로젝트(웹에플리케이션)전체에서 사용할 수 잇는 컨텍스트 초기화 파라미터(매개변수)로 일졸의 상수값이라고 생각하면된다 -->
+  <context-param>
+  <param-name>INIT_PARAM</param-name>
+  <param-value>web.xml에 저장한 초기화 매겨변수</param-value>
+  </context-param>
+  <context-param>
+  <param-name>OracleDriver</param-name>
+  <param-value>oracle.jdbc.OracleDriver</param-value>
+  </context-param>
+  <context-param>
+  <param-name>OracleURL</param-name>
+  <param-value>jdbc:oracle:thin:@localhost:1521:xe</param-value>
+  </context-param>
+  <context-param>
+  <param-name>OracleId</param-name>
+  <param-value>Musthave</param-value>
+  </context-param>
+  <context-param>
+  <param-name>OraclePwd</param-name>
+  <param-value>1234</param-value>
+  </context-param>
+  <!--
+  	웹애플리케이션에서 예외(에러) 발생시 처리할 페이지를 지정한다.
+  	
+  	404:NotFound.페이지를 찾을수 없을때 발생.
+  	405:Method not allowed. get/post방식으로 전송시 해당 요청을 처리할 메서드가 없을시 발생
+  	500:Internal sever error. 서버 내부 오류로 오타가 있거나 로직에 문제가 있을시 웹서버가 요청을 처리할 수 없을때
+  	발생한다.
+  	
+  	*에러페이지 처리는 실 서비스에서는 반드시 필요한 부분이지만 개발시에는 에러를 확인한 후 디버깅하면서 진행해야 하므로
+  	개발이 완료될때까지는 주석으로 처리해 두는것이 좋다.
+    -->
+    
+  <!-- <error-page>
+  <error-code>404</error-code>
+  <location>/02ImplicitObject/Exception.jsp</location>
+  </error-page>
+  <error-page>
+  <error-code>405</error-code>
+  <location>/02ImplicitObject/Exception.jsp</location>
+  </error-page>
+  <error-page>
+  <error-code>500</error-code>
+  <location>/02ImplicitObject/Exception.jsp</location>
+  </error-page> -->
+  
+  
+  <!-- 선언부에서 내장객체를 바로 사용하는건 불가능하다. 내장객체는 _jspService 메서드 내에서 생성된 지역변수이므로 더넓은 지역인
+  선언부에서 사용하려면 매개변수로 전달받아야한다. -->
+  <!--
+  	  방법1: getServletContext()메서드를 통해 선언부에서 application
+  		   내장객체를 얻어올 수 있다.
+  	  방법2:스크립트에서 메서드 호출시 application내장객체를 매개변수로 전달해서 사용한다.
+   -->
+   
+   
+   
+   <session-config>
+   <session-timeout>20</session-timeout>
+</session-config>
+
+
+</web-app>
